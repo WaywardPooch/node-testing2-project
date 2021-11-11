@@ -14,9 +14,13 @@ const getById = async (id) => {
   const task = await db("tasks")
     .where({ task_id: id })
     .first()
-  return {
-    ...task,
-    task_completed: Boolean(task.task_completed)
+  if (task) {
+    return {
+      ...task,
+      task_completed: Boolean(task.task_completed)
+    }
+  } else {
+    return null
   }
 }
 
