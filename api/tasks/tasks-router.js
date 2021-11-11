@@ -12,4 +12,16 @@ router.get("/",
   }
 )
 
+router.get("/:id",
+  async (req, res, next) => {
+    try {
+      const { id } = req.params
+      const task = await Task.getById(id)
+      res.status(200).json(task)
+    } catch (err) {
+      next(err)
+    }
+  }
+)
+
 module.exports = router
