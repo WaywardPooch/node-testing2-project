@@ -119,3 +119,4 @@ dist
 
 # Database files
 data/tasks.db3
+data/test.db3
