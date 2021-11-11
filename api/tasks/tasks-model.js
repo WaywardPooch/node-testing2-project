@@ -24,7 +24,15 @@ const getById = async (id) => {
   }
 }
 
+const add = async (newTask) => {
+  const [id] = await db("tasks")
+    .insert(newTask)
+  const task = getById(id)
+  return task
+}
+
 module.exports = {
   getAll,
-  getById
+  getById,
+  add
 }
