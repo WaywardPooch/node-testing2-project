@@ -46,7 +46,7 @@ describe("[POST] /api/tasks", () => {
 
   it("responds with status 201 when request is successful", async () => {
     const expected = 201
-    const res = await request(server).post("/api/tasks", newTask)
+    const res = await request(server).post("/api/tasks").send(newTask)
     const actual = res.status
     expect(actual).toBe(expected)
   })
@@ -57,7 +57,7 @@ describe("[POST] /api/tasks", () => {
       task_description: null,
       task_completed: false
     }
-    await request(server).post("/api/tasks", newTask)
+    await request(server).post("/api/tasks").send(newTask)
     const res = await request(server).get("/api/tasks/4")
     const actual = res.body
     expect(actual).toEqual(expected)
@@ -69,7 +69,7 @@ describe("[POST] /api/tasks", () => {
       task_description: null,
       task_completed: false
     }
-    const res = await request(server).post("/api/tasks", newTask)
+    const res = await request(server).post("/api/tasks").send(newTask)
     const actual = res.body
     expect(actual).toEqual(expected)
   })
