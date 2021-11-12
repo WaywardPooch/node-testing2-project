@@ -50,6 +50,13 @@ describe("[POST] /api/tasks", () => {
     const actual = res.status
     expect(actual).toBe(expected)
   })
+  it("responds with status 400 when task_name is missing", async () => {
+    const expected = 400
+    const badPayload = { task_completed: false }
+    const res = await request(server).post("/api/tasks").send(badPayload)
+    const actual = res.status
+    expect(actual).toBe(expected)
+  })
   it("can add valid task to database", async () => {
     const expected = {
       task_id: 4,
