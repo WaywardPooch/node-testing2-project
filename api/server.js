@@ -1,9 +1,14 @@
 const express = require("express")
+const helmet = require("helmet")
+const cors = require("cors")
+
 const tasksRouter = require("./tasks/tasks-router")
 
 const server = express()
 
 server.use(express.json())
+server.use(cors())
+server.use(helmet())
 
 server.use((req, res, next) => {
   const now = new Date()
