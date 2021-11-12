@@ -81,3 +81,25 @@ describe("[POST] /api/tasks", () => {
     expect(actual).toEqual(expected)
   })
 })
+
+describe("[DELETE] /api/tasks/:id", () => {
+  it("responds with status 200 when ID is valid", async () => {
+    const expected = 200
+    const res = await request(server).delete("/api/tasks/1")
+    const actual = res.status
+    expect(actual).toBe(expected)
+  })
+  it("responds with status 404 when ID is invalid", async () => {
+    const expected = 404
+    const res = await request(server).delete("/api/tasks/100")
+    const actual = res.status
+    expect(actual).toBe(expected)
+  })
+  it("can delete tasks from database", async () => {
+    const expected = 404
+    await request(server).delete("/api/tasks/1")
+    const res = await request(server).get("/api/tasks/1")
+    const actual = res.status
+    expect(actual).toBe(expected)
+  })
+})

@@ -8,7 +8,7 @@ For this project you will create a RESTful API using Node and Express, containin
 
 ## Requirements
 
-- [ ] Write a minimum of ten tests using supertest.
+- [x] Write a minimum of ten tests using supertest.
 
 ## Checklist
 
@@ -23,6 +23,6 @@ Here is a checklist of tasks to help you put your project together:
 - [x] Create migration and seed files.
 - [x] Put together "start", "server", "rollback", "migrate" and "seed" scripts in your `package.json`.
 - [x] Create a "test" script in your `package.json` using cross-env to inject a `NODE_ENV` of "testing".
-- [ ] Create a basic express application with a few database access functions and a few endpoints.
-- [ ] Test your endpoints manually using Postman, HTTPie or similar.
-- [ ] Test your endpoints with supertest.
+- [x] Create a basic express application with a few database access functions and a few endpoints.
+- [x] Test your endpoints manually using Postman, HTTPie or similar.
+- [x] Test your endpoints with supertest.

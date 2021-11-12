@@ -31,8 +31,15 @@ const add = async (newTask) => {
   return task
 }
 
+const removeById = async (id) => {
+  return await db("tasks")
+    .where({ task_id: id })
+    .del()
+}
+
 module.exports = {
   getAll,
   getById,
-  add
+  add,
+  removeById
 }

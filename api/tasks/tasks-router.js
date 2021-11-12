@@ -41,4 +41,21 @@ router.post("/",
   }
 )
 
+router.delete("/:id",
+  validateTaskId,
+  async (req, res, next) => {
+    try {
+      const { id } = req.params
+      const deletedTask = req.custom_task
+      await Task.removeById(id)
+      res.status(200).json({
+        message: `Task ${id} deleted, succesfully!`,
+        deletedTask
+      })
+    } catch (err) {
+      next(err)
+    }
+  }
+)
+
 module.exports = router
