@@ -4,6 +4,22 @@ const tasksRouter = require("./tasks/tasks-router")
 const server = express()
 
 server.use(express.json())
+
+server.use((req, res, next) => {
+  const now = new Date()
+  const date = now.toDateString()
+  const time = now.toTimeString()
+  console.log(`
+    --------------------
+    METHOD: ${req.method}
+    PATH:   ${req.originalUrl}
+    DATE:   ${date}
+    TIME:   ${time}
+    --------------------
+  `)
+  next()
+})
+
 server.use("/api/tasks", tasksRouter)
 
 server.use((err, req, res, next) => { // eslint-disable-line
